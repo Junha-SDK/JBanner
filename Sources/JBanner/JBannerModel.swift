@@ -72,19 +72,3 @@ public class JBannerModel: BannerModelProtocol {
         }
     }
 }
-
-extension JBannerModel {
-    public func updateImageList(newImages: [UIImage]) {
-        self.imageList = newImages
-        widthRatioSubject.onNext(nil)
-        computeInitialWidthRatio()
-    }
-    
-    private func computeInitialWidthRatio() {
-        let contentSizeWidth = Double(imageList.count) * 100.0
-        let contentInsetLeft: CGFloat = 0
-        let contentInsetRight: CGFloat = 0
-        let showingWidth = 300.0
-        computeWidthRatio(contentSizeWidth, contentInsetLeft, contentInsetRight, showingWidth, imageList.count)
-    }
-}

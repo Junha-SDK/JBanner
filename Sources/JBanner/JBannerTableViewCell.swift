@@ -7,7 +7,7 @@ import RxCocoa
 @available(iOS 13.0, *)
 public class JBannerTableViewCell: UITableViewCell {
     
-    static public var identifier: String = "JBannerTableViewCell"
+    static public var identifier: String = "MonsterBannerTableViewCell"
     
     private var bannerAutoScrollTimer: Timer?
     
@@ -15,7 +15,13 @@ public class JBannerTableViewCell: UITableViewCell {
     private var timerDisposeBag = DisposeBag()
     
     private var bannerModel: JBannerModel?
-    public var imageList: [UIImage] = []
+    public var imageList: [UIImage] = [
+        UIImage(systemName: "square.and.arrow.up")!,
+        UIImage(systemName: "square.and.arrow.up")!,
+        UIImage(systemName: "square.and.arrow.up")!,
+        UIImage(systemName: "square.and.arrow.up")!,
+        UIImage(systemName: "square.and.arrow.up")!
+    ]
     
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -52,16 +58,13 @@ public class JBannerTableViewCell: UITableViewCell {
         self.bannerTimer()
     }
     
-    public func setUp(_ model: JBannerModel, images: [UIImage]) {
+    public func setUp(_ model: JBannerModel) {
         self.bannerModel = model
-        model.updateImageList(newImages: images)
         self.layout()
-        self.setupImages()
-        
-//        self.imageList.insert(self.imageList[self.imageList.count - 1], at: 0)
-//        self.imageList.append(imageList[1])
-//        self.imageList.insert(self.imageList[self.imageList.count - 3], at: 0)
-//        self.imageList.append(imageList[3])
+        self.imageList.insert(self.imageList[self.imageList.count - 1], at: 0)
+        self.imageList.append(imageList[1])
+        self.imageList.insert(self.imageList[self.imageList.count - 3], at: 0)
+        self.imageList.append(imageList[3])
     }
     
     private func layout() {
